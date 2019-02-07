@@ -41,7 +41,7 @@ struct header2
 //==============================================================================================================================================================================
 void WczytanieNagl(header1 &FileHeader11, header2 &FileHeader12, int &polozenie1)
 {
-	ifstream plik1("obraz.bmp", ios::binary);
+	ifstream plik1("image.bmp", ios::binary);
 	if (!plik1)
 	{
 		cout << "Blad otwarcia pliku. Koniec programu." << endl;
@@ -88,7 +88,7 @@ void WczytanieNagl(header1 &FileHeader11, header2 &FileHeader12, int &polozenie1
 void WczytanieObr(int polozenie1, int kol, int wier, int *tablica)
 {
 
-	ifstream plik1("obraz.bmp", ios::binary);
+	ifstream plik1("image.bmp", ios::binary);
 	if (!plik1)
 	{
 		cout << "Blad otwarcia pliku. Koniec programu." << endl;
@@ -96,7 +96,7 @@ void WczytanieObr(int polozenie1, int kol, int wier, int *tablica)
 	}
 	plik1.seekg(polozenie1);
 
-	//Wype³nienie tablicy zerami w celu unikniêcia b³êdów sczytywania danych
+	//WypeÂ³nienie tablicy zerami w celu unikniÃªcia bÂ³ÃªdÃ³w sczytywania danych
 	for (int i = 0; i < wier; i++)
 	{
 		for (int j = 0; j < kol; j++)
@@ -122,7 +122,7 @@ void WczytanieObr(int polozenie1, int kol, int wier, int *tablica)
 //==============================================================================================================================================================================
 void FiltrDolCPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, int *tablica)
 {
-	ofstream plik("obraz_filtr_dolnoprzepustowy_CPU.bmp", ios::binary);
+	ofstream plik("image_low_pass_filter_CPU.bmp", ios::binary);
 	if (!plik)
 	{
 		cout << "Blad utworzenia pliku. Koniec programu." << endl;
@@ -180,7 +180,7 @@ void FiltrDolCPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, 
 //==============================================================================================================================================================================
 void FiltrGorCPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, int *tablica)
 {
-	ofstream plik("obraz_filtr_gornoprzepustowy_CPU.bmp", ios::binary);
+	ofstream plik("image_high_pass_filter_CPU.bmp", ios::binary);
 	if (!plik)
 	{
 		cout << "Blad utworzenia pliku. Koniec programu." << endl;
@@ -282,7 +282,7 @@ __global__ void FiltrGor(const int *tablica, int *mask, int kol, int wier)
 //==============================================================================================================================================================================
 void FiltrDolGPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, int *tablica)
 {
-	ofstream plik("obraz_filtr_dolnoprzepustowy_GPU.bmp", ios::binary);
+	ofstream plik("image_low_pass_filter_GPU.bmp", ios::binary);
 	if (!plik)
 	{
 		cout << "Blad utworzenia pliku. Koniec programu." << endl;
@@ -351,7 +351,7 @@ void FiltrDolGPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, 
 //==============================================================================================================================================================================
 void FiltrGorGPU(header1 FileHeader11, header2 FileHeader12, int kol, int wier, int *tablica)
 {
-	ofstream plik("obraz_filtr_gornoprzepustowy_GPU.bmp", ios::binary);
+	ofstream plik("image_high_pass_filter_GPU.bmp", ios::binary);
 	if (!plik)
 	{
 		cout << "Blad utworzenia pliku. Koniec programu." << endl;
